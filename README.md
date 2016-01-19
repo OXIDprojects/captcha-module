@@ -1,3 +1,3 @@
 captcha_module
 
-Contrib module contaning captcha logic.
+Contrib module containing captcha logic.
