@@ -1,7 +1,19 @@
 Simple captcha module
 =====================
 
-This module provides a simple captcha challenge (distorted characters).
+This module provides a simple captcha ("Completely Automated Public Turing test to tell Computers and Humans Apart")
+challenge (distorted characters in an image).
+
+It is used to ensure that only a user who can read the distorted characters and enter them in the related input field
+can submit the following forms:
+ - contact
+ - invite
+ - pricealarm
+ - suggest
+
+The captcha module then validates the submitted value against the expected one and then decides whether to process the
+request (e.g. send contact mail to shop administrator) or refuse and show an error message instead.
+
 
 Installation
 ------------
