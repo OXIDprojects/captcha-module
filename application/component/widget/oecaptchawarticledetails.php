@@ -6,7 +6,7 @@
 /**
  * Article detailed information widget.
  */
-class oewArticleDetails extends oewArticleDetails_parent
+class oeCaptchaWArticleDetails extends oeCaptchaWArticleDetails_parent
 {
     /**
      * Class handling CAPTCHA image.
