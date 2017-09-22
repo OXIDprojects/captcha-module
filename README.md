@@ -1,5 +1,6 @@
-Simple captcha module
-=====================
+# Simple captcha module
+
+## Description
 
 This module provides a simple captcha ("Completely Automated Public Turing test to tell Computers and Humans Apart")
 challenge (distorted characters in an image).
@@ -14,26 +15,41 @@ can submit the following forms:
 The captcha module then validates the submitted value against the expected one and then decides whether to process the
 request (e.g. send contact mail to shop administrator) or refuse and show an error message instead.
 
+## Installation
 
-Installation
-------------
+Please proceed with one of the following ways to install the module:
 
-- Make a new folder "captcha" in the **modules/oe/** directory of your shop installation. Download https://github.com/OXID-eSales/captcha_module/archive/master.zip and unpack it into this folder. **OR**
-- Git clone the module to your OXID eShop **modules/oe/** directory:
+### Module installation via composer
 
-  .. code:: bash
+In order to install the module via composer, run the following commands in commandline of your shop base directory 
+(where the shop's composer.json file resides).
 
-     git clone https://github.com/OXID-eSales/captcha_module.git captcha
-- Activate the module in administration panel.
+```
+composer config repositories.oxid-esales/captcha-module vcs https://github.com/OXIDprojects/captcha-module
+composer require oxid-esales/captcha-module:dev-master
+```
 
-Uninstallation
---------------
+### Module installation via repository cloning
 
-Disable the module in administration panel and/or delete the module folder.
+Clone the module to your OXID eShop **modules/oe/** directory:
+```
+git clone https://github.com/OXIDprojects/captcha-module.git captcha
+```
 
+### Module installation from zip package
 
-License
--------
+* Make a new folder "captcha" in the **modules/oe/ directory** of your shop installation. 
+* Download the https://github.com/OXIDprojects/captcha-module/archive/master.zip file and unpack it into the created folder.
+
+## Activate Module
+
+- Activate the module in the administration panel.
+
+## Uninstall
+
+Disable the module in administration area and delete the module folder.
+
+## License
 
 Licensing of the software product depends on the shop edition used. The software for OXID eShop Community Edition
 is published under the GNU General Public License v3. You may distribute and/or modify this software according to
