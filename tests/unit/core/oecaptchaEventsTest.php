@@ -3,6 +3,8 @@
  * #PHPHEADER_OECAPTCHA_LICENSE_INFORMATION#
  */
 
+use OxidEsales\EshopCommunity\Core\DatabaseProvider;
+
 require_once __DIR__ . '/../CaptchaTestCase.php';
 
 class Unit_Core_oecaptchaEventsTest extends CaptchaTestCase
@@ -15,7 +17,7 @@ class Unit_Core_oecaptchaEventsTest extends CaptchaTestCase
         parent::setUp();
 
         //Drop captcha table
-        oxDb::getDB()->execute("DROP TABLE IF EXISTS `oecaptcha`");
+        DatabaseProvider::getDB()->execute("DROP TABLE IF EXISTS `oecaptcha`");
     }
 
     /**

@@ -3,6 +3,8 @@
  * #PHPHEADER_OECAPTCHA_LICENSE_INFORMATION#
  */
 
+use OxidEsales\EshopCommunity\Core\DatabaseProvider;
+
 require_once __DIR__ . '/../CaptchaTestCase.php';
 
 class Unit_Core_oecaptchaTest extends CaptchaTestCase
@@ -50,7 +52,10 @@ class Unit_Core_oecaptchaTest extends CaptchaTestCase
         $captcha->expects($this->once())->method('getSession')->will($this->returnValue($session));
 
         $hash = $captcha->getHash('test');
-        $this->assertEquals(oxDb::getDb()->getOne('select LAST_INSERT_ID()', false, false), $hash);
+        $this->assertEquals(DatabaseProvider::getDb()->getOne(
+            'select LAST_INSERT_ID()',
+            false
+        ), $hash);
     }
 
     /**
@@ -127,7 +132,10 @@ class Unit_Core_oecaptchaTest extends CaptchaTestCase
         $captcha->setSession($session);
 
         $captcha->getHash('3at8u');
-        $hash = oxDb::getDb()->getOne('select LAST_INSERT_ID()', false, false);
+        $hash = DatabaseProvider::getDb()->getOne(
+            'select LAST_INSERT_ID()',
+            false
+        );
         $this->assertTrue($captcha->pass('3at8u', $hash));
     }
 

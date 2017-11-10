@@ -3,6 +3,8 @@
  * #PHPHEADER_OECAPTCHA_LICENSE_INFORMATION#
  */
 
+use OxidEsales\EshopCommunity\Core\DatabaseProvider;
+
 require_once __DIR__ . '/../CaptchaTestCase.php';
 
 class Unit_pricealarmTest extends CaptchaTestCase
@@ -33,7 +35,7 @@ class Unit_pricealarmTest extends CaptchaTestCase
         $this->assertEquals(2, $priceAlarm->getNonPublicVar('_iPriceAlarmStatus'));
 
         $query = 'select count(oxid) from oxpricealarm';
-        $this->assertEquals(0, oxDb::getDb()->getOne($query));
+        $this->assertEquals(0, DatabaseProvider::getDb()->getOne($query));
     }
 
     /**
@@ -50,7 +52,7 @@ class Unit_pricealarmTest extends CaptchaTestCase
         $this->assertEquals(0, $priceAlarm->getNonPublicVar('_iPriceAlarmStatus'));
 
         $query = 'select count(oxid) from oxpricealarm';
-        $this->assertEquals(0, oxDb::getDb()->getOne($query));
+        $this->assertEquals(0, DatabaseProvider::getDb()->getOne($query));
     }
 
     /**
@@ -75,7 +77,7 @@ class Unit_pricealarmTest extends CaptchaTestCase
         $this->assertEquals(999, $priceAlarm->getNonPublicVar('_iPriceAlarmStatus'));
 
         $query = 'select * from oxpricealarm';
-        $alarm = oxDb::getDb(oxDB::FETCH_MODE_ASSOC)->getRow($query);
+        $alarm = DatabaseProvider::getDb(oxDB::FETCH_MODE_ASSOC)->getRow($query);
 
         $this->assertEquals($parameters['email'], $alarm['OXEMAIL']);
         $this->assertEquals($parameters['aid'], $alarm['OXARTID']);
@@ -103,7 +105,7 @@ class Unit_pricealarmTest extends CaptchaTestCase
         $priceAlarm->addme();
 
         $query = 'select oxlang from oxpricealarm';
-        $language = oxDb::getDb(oxDB::FETCH_MODE_ASSOC)->getOne($query);
+        $language = DatabaseProvider::getDb(oxDB::FETCH_MODE_ASSOC)->getOne($query);
 
         $this->assertEquals(1, $language);
     }
