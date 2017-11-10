@@ -78,7 +78,7 @@ class Unit_Core_oecaptchaTest extends CaptchaTestCase
      */
     public function testGetImageUrl()
     {
-        $this->setConfigParam('oecaptchakey', 'someTestCaptchaKey');
+        $this->getConfig()->setConfigParam("oecaptchakey", 'someTestCaptchaKey');
         $this->captcha->setNonPublicVar('text', 'test1');
         $expected = $this->getConfig()->getShopUrl() . 'modules/oe/captcha/core/utils/verificationimg.php?e_mac=ox_MAsbCBYgVBoQ';
 
@@ -90,7 +90,7 @@ class Unit_Core_oecaptchaTest extends CaptchaTestCase
      */
     public function testGetImageUrlFallbackKey()
     {
-        $this->setConfigParam('oecaptchakey', '');
+        $this->getConfig()->setConfigParam("oecaptchakey", '');
         $this->captcha->setNonPublicVar('text', 'test1');
 
         $expected = $this->getConfig()->getShopUrl() . 'modules/oe/captcha/core/utils/verificationimg.php?e_mac=ox_MB4FUUYlYlld';

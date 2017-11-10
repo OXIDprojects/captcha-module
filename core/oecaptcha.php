@@ -110,10 +110,14 @@ class oeCaptcha extends oxSuperCfg
      */
     public function getImageUrl()
     {
-        $url = $this->getConfig()->getCurrentShopUrl() . 'modules/oe/captcha/core/utils/verificationimg.php?e_mac=';
-        $key = $this->getConfig()->getConfigParam('oecaptchakey');
-        $key = empty($key) ? null : $key;
-        $url .= oxRegistry::getUtils()->strMan($this->getText(), $key);
+        $config = \OxidEsales\Eshop\Core\Registry::getConfig();
+        $url = $config->getCurrentShopUrl() . 'modules/oe/captcha/core/utils/verificationimg.php?e_mac=';
+        $key = $config->getConfigParam('oecaptchakey');
+
+        $key = $key ? $key : $config->getConfigParam('sConfigKey');
+
+        $encryptor = new \OxidEsales\Eshop\Core\Encryptor();
+        $url .= $encryptor->encrypt($this->getText(), $key);
 
         return $url;
     }
