@@ -49,10 +49,10 @@ $aModule = array(
     ),
     'templates'   => array(),
     'blocks'      => array(
-        array('template' => 'form/contact.tpl', 'block'=>'captcha_form', 'file'=>'/views/blocks/captcha_form.tpl'),
-        array('template' => 'form/privatesales/invite.tpl', 'block'=>'captcha_form', 'file'=>'/views/blocks/captcha_form.tpl'),
-        array('template' => 'form/pricealarm.tpl', 'block'=>'captcha_form', 'file'=>'/views/blocks/captcha_form.tpl'),
-        array('template' => 'form/suggest.tpl', 'block'=>'captcha_form', 'file'=>'/views/blocks/captcha_form.tpl'),
+        array('template' => 'form/contact.tpl', 'block'=>'captcha_form', 'file'=>'/application/views/blocks/captcha_form.tpl'),
+        array('template' => 'form/privatesales/invite.tpl', 'block'=>'captcha_form', 'file'=>'/application/views/blocks/captcha_form.tpl'),
+        array('template' => 'form/pricealarm.tpl', 'block'=>'captcha_form', 'file'=>'/application/views/blocks/captcha_form.tpl'),
+        array('template' => 'form/suggest.tpl', 'block'=>'captcha_form', 'file'=>'/application/views/blocks/captcha_form.tpl'),
     ),
     'settings'    => array(
         array('group' => 'main', 'name' => 'oecaptchakey', 'type' => 'str', 'value' => ''),
