@@ -3,6 +3,8 @@
  * #PHPHEADER_OECAPTCHA_LICENSE_INFORMATION#
  */
 
+use OxidEsales\Eshop\Core\DatabaseProvider;
+
 /**
  * Class handling CAPTCHA image
  * This class requires utility file utils/verificationimg.php as image generator
@@ -76,7 +78,7 @@ class oeCaptcha extends oxSuperCfg
             $hashArray[$hash] = array($textHash => $time);
             $session->setVariable('captchaHashes', $hashArray);
         } else {
-            $database = oxDb::getDb();
+            $database = DatabaseProvider::getDb();
             $query = "insert into oecaptcha (oxhash, oxtime) values (" .
                       $database->quote($textHash) . ", " . $database->quote($time) . ")";
             $database->execute($query);
@@ -110,10 +112,14 @@ class oeCaptcha extends oxSuperCfg
      */
     public function getImageUrl()
     {
-        $url = $this->getConfig()->getCurrentShopUrl() . 'modules/oe/captcha/core/utils/verificationimg.php?e_mac=';
-        $key = $this->getConfig()->getConfigParam('oecaptchakey');
-        $key = empty($key) ? null : $key;
-        $url .= oxRegistry::getUtils()->strMan($this->getText(), $key);
+        $config = \OxidEsales\Eshop\Core\Registry::getConfig();
+        $url = $config->getCurrentShopUrl() . 'modules/oe/captcha/core/utils/verificationimg.php?e_mac=';
+        $key = $config->getConfigParam('oecaptchakey');
+
+        $key = $key ? $key : $config->getConfigParam('sConfigKey');
+
+        $encryptor = new \OxidEsales\Eshop\Core\Encryptor();
+        $url .= $encryptor->encrypt($this->getText(), $key);
 
         return $url;
     }
@@ -213,7 +219,7 @@ class oeCaptcha extends oxSuperCfg
      */
     protected function passFromDb($macHash, $hash, $time)
     {
-        $database = oxDb::getDb();
+        $database = DatabaseProvider::getDb();
         $where = "where oxid = " . $database->quote($macHash) . " and oxhash = " . $database->quote($hash);
         $query = "select 1 from oecaptcha " . $where;
         $pass = (bool) $database->getOne($query, false, false);

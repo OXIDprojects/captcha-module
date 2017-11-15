@@ -3,6 +3,7 @@
  * #PHPHEADER_OECAPTCHA_LICENSE_INFORMATION#
  */
 
+use OxidEsales\Eshop\Core\DatabaseProvider;
 
 /**
  * Class defines what module does on Shop events.
@@ -24,8 +25,7 @@ class oeCaptchaEvents
                  "KEY `OXTIME` (`OXTIME`) " .
                  ") ENGINE=MEMORY AUTO_INCREMENT=1 COMMENT 'If session is not available, this is where captcha information is stored';";
 
-        oxDb::getDb()->execute($query);
-
+        DatabaseProvider::getDb()->execute($query);
     }
 
     /**
@@ -37,7 +37,7 @@ class oeCaptchaEvents
     {
         $query = "DROP TABLE IF EXISTS `oecaptcha`";
 
-        oxDb::getDb()->execute($query);
+        DatabaseProvider::getDb()->execute($query);
     }
 
     /**

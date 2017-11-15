@@ -62,8 +62,6 @@ if (!function_exists('generateVerificationImg')) {
 
 if (!function_exists('strRem')) {
 
-    require_once getShopBasePath() . '/core/oxdecryptor.php';
-
     /**
      * OXID specific string manipulation method
      *
@@ -73,10 +71,10 @@ if (!function_exists('strRem')) {
      */
     function strRem($value)
     {
-        $decryptor = new oxDecryptor;
+        $decryptor = new \OxidEsales\Eshop\Core\Decryptor();
+        $config = oxRegistry::getConfig();
 
-        $key = oxRegistry::getConfig()->getConfigParam('oecaptchakey');
-
+        $key = $config->getConfigParam('oecaptchakey');
         if (empty($key)) {
             $key = getOxConfKey();
         }
@@ -94,10 +92,9 @@ if (!function_exists('getOxConfKey')) {
      */
     function getOxConfKey()
     {
-        $fileName = getShopBasePath() . '/core/oxconfk.php';
-        $configFile = new oxConfigFile($fileName);
-
-        return $configFile->getVar("sConfigKey");
+        $config = oxRegistry::getConfig();
+        $configKey = $config->getConfigParam('sConfigKey') ?: \OxidEsales\Eshop\Core\Config::DEFAULT_CONFIG_KEY;
+        return $configKey;
     }
 
 }

@@ -3,7 +3,9 @@
  * #PHPHEADER_OECAPTCHA_LICENSE_INFORMATION#
  */
 
-abstract class CaptchaTestCase extends OxidTestCase
+use OxidEsales\EshopCommunity\Core\DatabaseProvider;
+
+abstract class CaptchaTestCase extends \OxidEsales\TestingLibrary\UnitTestCase
 {
     /**
      * Fixture set up.
@@ -23,7 +25,7 @@ abstract class CaptchaTestCase extends OxidTestCase
                 ) ENGINE=MEMORY AUTO_INCREMENT=1 COMMENT 'If session is not available, this is where captcha information is stored';
                 ";
 
-        oxDb::getDb()->execute($query);
+        DatabaseProvider::getDb()->execute($query);
     }
 
     /**
@@ -32,7 +34,7 @@ abstract class CaptchaTestCase extends OxidTestCase
     protected function tearDown()
     {
         $query = "DROP TABLE `oecaptcha`";
-        oxDb::getDb()->execute($query);
+        DatabaseProvider::getDb()->execute($query);
 
         parent::tearDown();
     }

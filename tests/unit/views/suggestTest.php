@@ -3,6 +3,8 @@
  * #PHPHEADER_OECAPTCHA_LICENSE_INFORMATION#
  */
 
+use OxidEsales\EshopCommunity\Core\DatabaseProvider;
+
 require_once __DIR__ . '/../CaptchaTestCase.php';
 
 class Unit_suggestTest extends CaptchaTestCase
@@ -15,10 +17,10 @@ class Unit_suggestTest extends CaptchaTestCase
     protected function tearDown()
     {
         $sDelete = "delete from oxrecommlists where oxid like 'testlist%'";
-        oxDb::getDB()->execute($sDelete);
+        DatabaseProvider::getDB()->execute($sDelete);
 
         $sDelete = "delete from oxobject2list where oxlistid like 'testlist%'";
-        oxDb::getDB()->execute($sDelete);
+        DatabaseProvider::getDB()->execute($sDelete);
 
         parent::tearDown();
     }
