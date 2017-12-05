@@ -25,8 +25,7 @@ In order to install the module via composer, run the following commands in comma
 (where the shop's composer.json file resides).
 
 ```
-composer config repositories.oxid-esales/captcha-module vcs https://github.com/OXIDprojects/captcha-module
-composer require oxid-esales/captcha-module:dev-master
+composer require oxid-projects/captcha-module
 ```
 
 ### Module installation via repository cloning

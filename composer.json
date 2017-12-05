@@ -1,5 +1,5 @@
 {
-  "name": "oxid-esales/captcha-module",
+  "name": "oxid-projects/captcha-module",
   "description": "This is Captcha module for OXID eShop.",
   "type": "oxideshop-module",
   "keywords": ["oxid", "modules", "eShop", "captcha"],
