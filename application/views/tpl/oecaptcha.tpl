@@ -15,7 +15,5 @@
             </span>
             <input type="text" data-fieldsize="verify" name="c_mac" value="" class="form-control js-oxValidate js-oxValidate_notEmpty" required>
         </div>
-
-        <div class="help-block"}]
     </div>
 </div>
