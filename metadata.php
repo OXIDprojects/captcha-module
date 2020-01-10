@@ -47,7 +47,9 @@ $aModule = array(
         'oecaptcha'       => 'oe/captcha/core/oecaptcha.php',
         'oecaptchaEvents' => 'oe/captcha/core/oecaptchaevents.php',
     ),
-    'templates'   => array(),
+    'templates'   => array(
+        'oecaptcha.tpl' => 'oe/captcha/application/views/tpl/oecaptcha.tpl',
+    ),
     'blocks'      => array(
         array('template' => 'form/contact.tpl', 'block'=>'captcha_form', 'file'=>'/application/views/blocks/captcha_form.tpl'),
         array('template' => 'form/privatesales/invite.tpl', 'block'=>'captcha_form', 'file'=>'/application/views/blocks/captcha_form.tpl'),
