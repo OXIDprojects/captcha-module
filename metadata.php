@@ -40,6 +40,7 @@ $aModule = array(
     'extend'      => array('details'           => 'oe/captcha/controllers/oecaptchadetails',
                            'contact'           => 'oe/captcha/controllers/oecaptchacontact',
                            'invite'            => 'oe/captcha/controllers/oecaptchainvite',
+                           'newsletter'        => 'oe/captcha/controllers/oecaptchanewsletter',
                            'pricealarm'        => 'oe/captcha/controllers/oecaptchapricealarm',
                            'suggest'           => 'oe/captcha/controllers/oecaptchasuggest',
                            'oxwarticledetails' => 'oe/captcha/application/component/widget/oecaptchawarticledetails'),
@@ -52,6 +53,7 @@ $aModule = array(
     ),
     'blocks'      => array(
         array('template' => 'form/contact.tpl', 'block'=>'captcha_form', 'file'=>'/application/views/blocks/captcha_form.tpl'),
+        array('template' => 'form/newsletter.tpl', 'block'=>'captcha_form', 'file'=>'/application/views/blocks/captcha_form.tpl'),
         array('template' => 'form/privatesales/invite.tpl', 'block'=>'captcha_form', 'file'=>'/application/views/blocks/captcha_form.tpl'),
         array('template' => 'form/pricealarm.tpl', 'block'=>'captcha_form', 'file'=>'/application/views/blocks/captcha_form.tpl'),
         array('template' => 'form/suggest.tpl', 'block'=>'captcha_form', 'file'=>'/application/views/blocks/captcha_form.tpl'),
