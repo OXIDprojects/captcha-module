@@ -2,9 +2,9 @@
 <input type="hidden" name="c_mach" value="[{$oCaptcha->getHash()}]"/>
 
 <div class="form-group verify">
-    <label class="req control-label col-lg-2" for="c_mac">[{oxmultilang ident="VERIFICATION_CODE"}]</label>
+    <label class="req control-label [{$labelCssClass}]" for="c_mac">[{oxmultilang ident="VERIFICATION_CODE"}]</label>
 
-    <div class="col-lg-10 controls">
+    <div class="[{$inputCssClass}] controls">
         <div class="input-group">
             <span class="input-group-addon">
                 [{if $oCaptcha->isImageVisible()}]

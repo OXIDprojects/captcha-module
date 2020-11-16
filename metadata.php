@@ -39,6 +39,7 @@ $aModule = array(
     'email'       => '',
     'extend'      => array('details'           => 'oe/captcha/controllers/oecaptchadetails',
                            'contact'           => 'oe/captcha/controllers/oecaptchacontact',
+                           'forgotpwd'         => 'oe/captcha/controllers/oecaptchaforgotpwd',
                            'invite'            => 'oe/captcha/controllers/oecaptchainvite',
                            'newsletter'        => 'oe/captcha/controllers/oecaptchanewsletter',
                            'pricealarm'        => 'oe/captcha/controllers/oecaptchapricealarm',
@@ -57,6 +58,7 @@ $aModule = array(
         array('template' => 'form/privatesales/invite.tpl', 'block'=>'captcha_form', 'file'=>'/application/views/blocks/captcha_form.tpl'),
         array('template' => 'form/pricealarm.tpl', 'block'=>'captcha_form', 'file'=>'/application/views/blocks/captcha_form.tpl'),
         array('template' => 'form/suggest.tpl', 'block'=>'captcha_form', 'file'=>'/application/views/blocks/captcha_form.tpl'),
+        array('template' => 'form/forgotpwd_email.tpl', 'block'=>'captcha_form', 'file'=>'/application/views/blocks/captcha_form_forgotpwd.tpl'),
     ),
     'settings'    => array(
         array('group' => 'main', 'name' => 'oecaptchakey', 'type' => 'str', 'value' => ''),
