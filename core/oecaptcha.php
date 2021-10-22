@@ -50,7 +50,7 @@ class oeCaptcha extends oxSuperCfg
         if (!$this->text) {
             $this->text = '';
             for ($i = 0; $i < $this->macLength; $i++) {
-                $this->text .= strtolower($this->macChars{rand(0, strlen($this->macChars) - 1)});
+                $this->text .= strtolower($this->macChars[rand(0, strlen($this->macChars) - 1)]);
             }
         }
 
