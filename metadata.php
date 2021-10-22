@@ -33,7 +33,7 @@ $aModule = array(
         'en' => 'OXID eSales Simple Captcha Module',
     ),
     'thumbnail'   => 'out/pictures/picture.png',
-    'version'     => '2.0.5',
+    'version'     => '2.0.4',
     'author'      => 'OXID eSales AG',
     'url'         => 'http://www.oxid-esales.com/',
     'email'       => '',
