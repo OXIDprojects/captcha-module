@@ -1,6 +1,9 @@
 <?php
+
+use OxidProfessionalServices\Captcha\Application\Core\Module;
+
 /**
- * #PHPHEADER_OECAPTCHA_LICENSE_INFORMATION#
+ * #PHPHEADER_OECAPTCHA_LICENSE_INFORMATION#.
  */
 /**
  * This file is part of OXID eSales Captcha module.
@@ -8,63 +11,94 @@
  * TODO: license
  *
  * @category      module
- * @package       captcha
+ *
  * @author        OXID eSales AG
- * @link          http://www.oxid-esales.com/
+ *
+ * @see          http://www.oxid-esales.com/
+ *
  * @copyright (C) OXID eSales AG 2003-20162016
  */
 
 /**
- * Metadata version
+ * Metadata version.
  */
-$sMetadataVersion = '1.1';
+$sMetadataVersion = '2.1';
 
 /**
- * Module information
+ * Module information.
  */
-$aModule = array(
-    'id'          => 'oecaptcha',
-    'title'       => array(
+$aModule = [
+    'id'    => Module::ID,
+    'title' => [
         'de' => 'Simple Captcha',
         'en' => 'Simple Captcha',
-    ),
-    'description' => array(
+    ],
+    'description' => [
         'de' => 'OXID eSales Simple Captcha Module',
         'en' => 'OXID eSales Simple Captcha Module',
-    ),
-    'thumbnail'   => 'out/pictures/picture.png',
-    'version'     => '2.0.4',
-    'author'      => 'OXID eSales AG',
-    'url'         => 'http://www.oxid-esales.com/',
-    'email'       => '',
-    'extend'      => array('details'           => 'oe/captcha/controllers/oecaptchadetails',
-                           'contact'           => 'oe/captcha/controllers/oecaptchacontact',
-                           'forgotpwd'         => 'oe/captcha/controllers/oecaptchaforgotpwd',
-                           'invite'            => 'oe/captcha/controllers/oecaptchainvite',
-                           'newsletter'        => 'oe/captcha/controllers/oecaptchanewsletter',
-                           'pricealarm'        => 'oe/captcha/controllers/oecaptchapricealarm',
-                           'suggest'           => 'oe/captcha/controllers/oecaptchasuggest',
-                           'oxwarticledetails' => 'oe/captcha/application/component/widget/oecaptchawarticledetails'),
-    'files'       => array(
-        'oecaptcha'       => 'oe/captcha/core/oecaptcha.php',
-        'oecaptchaEvents' => 'oe/captcha/core/oecaptchaevents.php',
-    ),
-    'templates'   => array(
-        'oecaptcha.tpl' => 'oe/captcha/application/views/tpl/oecaptcha.tpl',
-    ),
-    'blocks'      => array(
-        array('template' => 'form/contact.tpl', 'block'=>'captcha_form', 'file'=>'/application/views/blocks/captcha_form.tpl'),
-        array('template' => 'form/newsletter.tpl', 'block'=>'captcha_form', 'file'=>'/application/views/blocks/captcha_form.tpl'),
-        array('template' => 'form/privatesales/invite.tpl', 'block'=>'captcha_form', 'file'=>'/application/views/blocks/captcha_form.tpl'),
-        array('template' => 'form/pricealarm.tpl', 'block'=>'captcha_form', 'file'=>'/application/views/blocks/captcha_form.tpl'),
-        array('template' => 'form/suggest.tpl', 'block'=>'captcha_form', 'file'=>'/application/views/blocks/captcha_form.tpl'),
-        array('template' => 'form/forgotpwd_email.tpl', 'block'=>'captcha_form', 'file'=>'/application/views/blocks/captcha_form_forgotpwd.tpl'),
-    ),
-    'settings'    => array(
-        array('group' => 'main', 'name' => 'oecaptchakey', 'type' => 'str', 'value' => ''),
-    ),
-    'events'       => array(
-        'onActivate'   => 'oecaptchaevents::onActivate',
-        'onDeactivate' => 'oecaptchaevents::onDeactivate'
-    ),
-);
+    ],
+    'thumbnail'               => 'logo.png',
+    'version'                 => Module::VERSION,
+    'author'                  => 'OXID eSales AG',
+    'url'                     => 'https://www.oxid-esales.com/',
+    'email'                   => '',
+    'controllers'             => [
+        'ith_basic_captcha_generator' => OxidProfessionalServices\Captcha\Application\Controller\ImageGeneratorController::class,
+    ],
+    'extend'    => [
+        OxidEsales\Eshop\Application\Controller\ArticleDetailsController::class => OxidProfessionalServices\Captcha\Application\Controller\DetailsController::class,
+        OxidEsales\Eshop\Application\Controller\ContactController::class        => OxidProfessionalServices\Captcha\Application\Controller\ContactController::class,
+        OxidEsales\Eshop\Application\Controller\ForgotPasswordController::class => OxidProfessionalServices\Captcha\Application\Controller\ForgotPasswordController::class,
+        OxidEsales\Eshop\Application\Controller\InviteController::class         => OxidProfessionalServices\Captcha\Application\Controller\InviteController::class,
+        OxidEsales\Eshop\Application\Controller\NewsletterController::class     => OxidProfessionalServices\Captcha\Application\Controller\NewsletterController::class,
+        OxidEsales\Eshop\Application\Controller\PriceAlarmController::class     => OxidProfessionalServices\Captcha\Application\Controller\PricealarmController::class,
+        OxidEsales\Eshop\Application\Component\Widget\ArticleDetails::class     => OxidProfessionalServices\Captcha\Application\Component\Widget\ArticleDetails::class,
+    ],
+    'templates' => [
+        'oe_captcha.tpl' => 'views/smarty/tpl/oe_captcha.tpl',
+    ],
+    'blocks' => [
+        [
+            'template' => 'form/contact.tpl',
+            'block'    => 'captcha_form',
+            'file'     => 'views/smarty/blocks/oe_captcha_form.tpl',
+        ],
+        [
+            'template' => 'form/newsletter.tpl',
+            'block'    => 'captcha_form',
+            'file'     => 'views/smarty/blocks/oe_captcha_form.tpl',
+        ],
+        [
+            'template' => 'form/privatesales/invite.tpl',
+            'block'    => 'captcha_form',
+            'file'     => 'views/smarty/blocks/oe_captcha_form.tpl',
+        ],
+        [
+            'template' => 'form/pricealarm.tpl',
+            'block'    => 'captcha_form',
+            'file'     => 'views/smarty/blocks/oe_captcha_form.tpl',
+        ],
+        [
+            'template' => 'form/suggest.tpl',
+            'block'    => 'captcha_form',
+            'file'     => 'views/smarty/blocks/oe_captcha_form.tpl',
+        ],
+        [
+            'template' => 'form/forgotpwd_email.tpl',
+            'block'    => 'captcha_form',
+            'file'     => 'views/smarty/blocks/oe_captcha_form.tpl',
+        ],
+    ],
+    'settings' => [
+        [
+            'group' => 'main',
+            'name'  => 'oecaptchakey',
+            'type'  => 'str',
+            'value' => '',
+        ],
+    ],
+    'events' => [
+        'onActivate'   => Module::class . '::onActivate',
+        'onDeactivate' => Module::class . '::onDeactivate',
+    ],
+];
