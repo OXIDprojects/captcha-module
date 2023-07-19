@@ -1,26 +1,49 @@
 {% set oCaptcha = oView.getCaptcha() %}
-<input type="hidden" name="c_mach" value="{{ oCaptcha.getHash() }}" />
-{% block style %}
-    <style>
-        .oecaptcha {padding: 0 .75rem;}
-        .oecaptcha-group {display: flex; align-items: center; gap: 2ch;}
-        .oecaptcha-container {display: grid; place-items: center;}
-    </style>
-{% endblock %}
-<div class="form-group verify oecaptcha mb-3">
-    <label class="req control-label col-lg-2" for="c_mac">{{ translate({ ident: "VERIFICATION_CODE" }) }}</label>
+{% block body %}
+    {% block style %}
+        <style>
+            .oecaptcha {padding: 0 .75rem;}
+            .oecaptcha-group {display: flex; align-items: center; gap: 2ch;}
+            .oecaptcha-container {display: grid; place-items: center;}
+        </style>
+    {% endblock %}
+    
+    {% block hidden %}
+        <input type="hidden" name="c_mach" value="{{ oCaptcha.getHash() }}" />
+    {% endblock %}
+    
+    {% block form_group %}
+    <div class="form-group verify oecaptcha mb-3">
+        {% block label %}
+            <label class="req control-label col-lg-2" for="c_mac">{{ translate({ ident: "VERIFICATION_CODE" }) }}</label>
+        {% endblock %}
 
-    <div class="col-lg-10 controls oecaptcha-group-container">
-        <div class="input-group oecaptcha-group">
-            <span class="input-group-addon oecaptcha-container">
-                {% if oCaptcha.isImageVisible() %}
-                    <img src="{{ oCaptcha.getImageUrl() }}" alt="">
-                {% else %}
-                    <span class="verificationCode" id="verifyTextCode">{{ oCaptcha.getText() }}</span>
-                {% endif %}
-            </span>
-            <input type="text" data-fieldsize="verify" name="c_mac" value="" placeholder="{{ translate({ ident: "OECAPTCHA_PLACEHOLDER" }) }}"
-                class="form-control js-oxValidate js-oxValidate_notEmpty" required>
-        </div>
+        {% block input_control %}
+            <div class="col-lg-10 controls oecaptcha-group-container">
+                {% block input_group %}
+                    <div class="input-group oecaptcha-group">
+                        {% block image_group %}
+                            <span class="input-group-addon oecaptcha-container">
+                                {% if oCaptcha.isImageVisible() %}
+                                    {% block image_visible %}
+                                        <img src="{{ oCaptcha.getImageUrl() }}" alt="">
+                                    {% endblock %}
+                                {% else %}
+                                    {% block image_hidden %}
+                                        <span class="verificationCode" id="verifyTextCode">{{ oCaptcha.getText() }}</span>
+                                    {% endblock %}
+                                {% endif %}
+                            </span>
+                        {% endblock %}
+
+                        {% block input %}
+                            <input type="text" data-fieldsize="verify" name="c_mac" value="" placeholder="{{ translate({ ident: "OECAPTCHA_PLACEHOLDER" }) }}"
+                                class="form-control js-oxValidate js-oxValidate_notEmpty" required>
+                        {% endblock %}
+                    </div>
+                {% endblock %}
+            </div>
+        {% endblock %}
     </div>
-</div>
+    {% endblock %}
+{% endblock %}

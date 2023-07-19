@@ -28,6 +28,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Removed
 - Suggest dropped out
+- /docs folder (no relevant information)
+
+### Deprecated
+- Tests won't work for this release and should be updated in the future.
 
 ## [2.0.4] - 22 Oct 2021
 

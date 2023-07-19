@@ -10,6 +10,8 @@ can submit the following forms:
  - contact
  - invite
  - pricealarm (not bound in twig)
+ - newsletter (not bound in twig)
+ - forgotpwd (not bound in twig)
 
 The captcha module then validates the submitted value against the expected one and then decides whether to process the
 request (e.g. send contact mail to shop administrator) or refuse and show an error message instead.
@@ -41,8 +43,6 @@ And install module:
 ```bash
 composer require oxid-projects/captcha-module
 vendor/bin/oe-console oe:module:install source/modules/oe/captcha
-# And activate
-vendor/bin/oe-console oe:module:activate oecaptcha
 ```
 
 ## Activate Module
@@ -51,6 +51,7 @@ vendor/bin/oe-console oe:module:activate oecaptcha
 - Or use console
 ```bash
 vendor/bin/oe-console oe:module:activate oecaptcha
+vendor/bin/oe-console oe:cache:clear
 ```
 
 ## Uninstall
@@ -62,10 +63,12 @@ vendor/bin/oe-console oe:module:deactivate oecaptcha
 If installed over composer (packagist):
 ```bash
 composer remove oxid-projects/captcha-module
+vendor/bin/oe-console oe:cache:clear
 ```
 else if cloned:
 ```bash
 vendor/bin/oe-console oe:module:uninstall oecaptcha
+vendor/bin/oe-console oe:cache:clear
 composer remove oxid-projects/captcha-module
 composer config --unset repositories.oxid-projects/captcha-module
 # and remove the source itself

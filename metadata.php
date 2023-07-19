@@ -73,6 +73,16 @@ $aModule = [
             'block'    => 'captcha_form',
             'file'     => 'views/smarty/blocks/oe_captcha_form.tpl',
         ],
+        [
+            'template' => 'form/newsletter.tpl',
+            'block'    => 'captcha_form',
+            'file'     => 'views/smarty/blocks/oe_captcha_form.tpl',
+        ],
+        [
+            'template' => 'form/forgotpwd_email.tpl',
+            'block'    => 'captcha_form',
+            'file'     => 'views/smarty/blocks/oe_captcha_form.tpl',
+        ],
     ],
     'settings' => [
         [
