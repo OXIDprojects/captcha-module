@@ -15,8 +15,8 @@ class ImageGeneratorController extends FrontendController
     use Options;
 
     protected $emac;
-    protected $imageHeight = 18;
-    protected $imageWidth  = 80;
+    protected int $imageHeight = 18;
+    protected int $imageWidth  = 80;
     protected $fontSize    = 14;
 
     public function init()
@@ -80,8 +80,8 @@ class ImageGeneratorController extends FrontendController
             default:
                 return null;
         }
-        $textX = ($this->imageWidth - strlen($this->emac) * imagefontwidth($this->fontSize)) / 2;
-        $textY = ($this->imageHeight - imagefontheight($this->fontSize)) / 2;
+        $textX = (int)ceil(($this->imageWidth - strlen($this->emac) * imagefontwidth($this->fontSize)) / 2);
+        $textY = (int)ceil(($this->imageHeight - imagefontheight($this->fontSize)) / 2) - 1;
 
         $colors = [
             'text'       => imagecolorallocate($image, 0, 0, 0),
@@ -92,7 +92,7 @@ class ImageGeneratorController extends FrontendController
         ];
 
         imagefill($image, 0, 0, $colors['background']);
-        imagerectangle($image, 0, 0, $this->imageWidth - 1, $this->imageHeight - 1, $colors['border']);
+        imagerectangle($image, 0, 0, $this->imageWidth - 2, $this->imageHeight - 2, $colors['border']);
         imagestring($image, $this->fontSize, $textX + 1, $textY + 0, $this->emac, $colors['shadow2']);
         imagestring($image, $this->fontSize, $textX + 0, $textY + 1, $this->emac, $colors['shadow1']);
         imagestring($image, $this->fontSize, $textX, $textY, $this->emac, $colors['text']);

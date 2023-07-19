@@ -1,4 +1,4 @@
-[{assign var="oCaptcha" value=$oView->getCaptcha()}]
+[{assign var="oCaptcha" value=$oView->getOeCaptcha()}]
 <input type="hidden" name="c_mach" value="[{$oCaptcha->getHash()}]" />
 
 <div class="form-group verify">

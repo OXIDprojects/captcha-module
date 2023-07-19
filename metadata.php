@@ -43,7 +43,7 @@ $aModule = [
     'url'                     => 'https://www.oxid-esales.com/',
     'email'                   => '',
     'controllers'             => [
-        'ith_basic_captcha_generator' => OxidProfessionalServices\Captcha\Application\Controller\ImageGeneratorController::class,
+        'oe_captcha_generator' => OxidProfessionalServices\Captcha\Application\Controller\ImageGeneratorController::class,
     ],
     'extend'    => [
         OxidEsales\Eshop\Application\Controller\ArticleDetailsController::class => OxidProfessionalServices\Captcha\Application\Controller\DetailsController::class,
@@ -55,16 +55,11 @@ $aModule = [
         OxidEsales\Eshop\Application\Component\Widget\ArticleDetails::class     => OxidProfessionalServices\Captcha\Application\Component\Widget\ArticleDetails::class,
     ],
     'templates' => [
-        'oe_captcha.tpl' => 'views/smarty/tpl/oe_captcha.tpl',
+        'oe_captcha.tpl' => 'views/smarty/tpl/include/oe_captcha.tpl',
     ],
     'blocks' => [
         [
             'template' => 'form/contact.tpl',
-            'block'    => 'captcha_form',
-            'file'     => 'views/smarty/blocks/oe_captcha_form.tpl',
-        ],
-        [
-            'template' => 'form/newsletter.tpl',
             'block'    => 'captcha_form',
             'file'     => 'views/smarty/blocks/oe_captcha_form.tpl',
         ],
@@ -75,16 +70,6 @@ $aModule = [
         ],
         [
             'template' => 'form/pricealarm.tpl',
-            'block'    => 'captcha_form',
-            'file'     => 'views/smarty/blocks/oe_captcha_form.tpl',
-        ],
-        [
-            'template' => 'form/suggest.tpl',
-            'block'    => 'captcha_form',
-            'file'     => 'views/smarty/blocks/oe_captcha_form.tpl',
-        ],
-        [
-            'template' => 'form/forgotpwd_email.tpl',
             'block'    => 'captcha_form',
             'file'     => 'views/smarty/blocks/oe_captcha_form.tpl',
         ],

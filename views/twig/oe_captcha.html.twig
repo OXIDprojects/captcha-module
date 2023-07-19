@@ -1,0 +1,26 @@
+{% set oCaptcha = oView.getCaptcha() %}
+<input type="hidden" name="c_mach" value="{{ oCaptcha.getHash() }}" />
+{% block style %}
+    <style>
+        .oecaptcha {padding: 0 .75rem;}
+        .oecaptcha-group {display: flex; align-items: center; gap: 2ch;}
+        .oecaptcha-container {display: grid; place-items: center;}
+    </style>
+{% endblock %}
+<div class="form-group verify oecaptcha mb-3">
+    <label class="req control-label col-lg-2" for="c_mac">{{ translate({ ident: "VERIFICATION_CODE" }) }}</label>
+
+    <div class="col-lg-10 controls oecaptcha-group-container">
+        <div class="input-group oecaptcha-group">
+            <span class="input-group-addon oecaptcha-container">
+                {% if oCaptcha.isImageVisible() %}
+                    <img src="{{ oCaptcha.getImageUrl() }}" alt="">
+                {% else %}
+                    <span class="verificationCode" id="verifyTextCode">{{ oCaptcha.getText() }}</span>
+                {% endif %}
+            </span>
+            <input type="text" data-fieldsize="verify" name="c_mac" value="" placeholder="{{ translate({ ident: "OECAPTCHA_PLACEHOLDER" }) }}"
+                class="form-control js-oxValidate js-oxValidate_notEmpty" required>
+        </div>
+    </div>
+</div>

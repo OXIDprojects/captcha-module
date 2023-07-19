@@ -8,14 +8,10 @@ use OxidProfessionalServices\Captcha\Application\Core\Captcha as CaptchaCore;
 
 trait Captcha
 {
-    protected ?CaptchaCore $captcha;
+    protected ?CaptchaCore $oeCaptcha;
 
     public function getCaptcha(): CaptchaCore
     {
-        if (!$this->captcha) {
-            $this->captcha = CaptchaCore::getInstance();
-        }
-
-        return $this->captcha;
+        return $this->oeCaptcha ??= CaptchaCore::getInstance();
     }
 }

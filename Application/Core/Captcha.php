@@ -95,8 +95,8 @@ class Captcha
         $return = true;
 
         // spam spider prevention
-        $mac     = Registry::getConfig()->getRequestParameter('c_mac');
-        $macHash = Registry::getConfig()->getRequestParameter('c_mach');
+        $mac     = Registry::getRequest()->getRequestParameter('c_mac');
+        $macHash = Registry::getRequest()->getRequestParameter('c_mach');
 
         if (!$this->pass($mac, $macHash)) {
             $return = false;
@@ -131,7 +131,7 @@ class Captcha
         $key       = $this->getOeCaptchaKey();
         $encryptor = new \OxidEsales\Eshop\Core\Encryptor();
 
-        return $config->getCurrentShopUrl() . sprintf('?cl=ith_basic_captcha_generator&e_mac=%s&shp=%d', $encryptor->encrypt($this->getText(), $key), $config->getShopId());
+        return $config->getCurrentShopUrl() . sprintf('?cl=oe_captcha_generator&e_mac=%s&shp=%d', $encryptor->encrypt($this->getText(), $key), $config->getShopId());
     }
 
     /**

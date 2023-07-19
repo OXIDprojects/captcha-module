@@ -9,8 +9,7 @@ It is used to ensure that only a user who can read the distorted characters and 
 can submit the following forms:
  - contact
  - invite
- - pricealarm
- - suggest
+ - pricealarm (not bound in twig)
 
 The captcha module then validates the submitted value against the expected one and then decides whether to process the
 request (e.g. send contact mail to shop administrator) or refuse and show an error message instead.
@@ -24,29 +23,54 @@ Please proceed with one of the following ways to install the module:
 In order to install the module via composer, run the following commands in commandline of your shop base directory 
 (where the shop's composer.json file resides).
 
-```
+```bash
 composer require oxid-projects/captcha-module
 ```
 
 ### Module installation via repository cloning
 
 Clone the module to your OXID eShop **modules/oe/** directory:
-```
+```bash
 git clone https://github.com/OXIDprojects/captcha-module.git captcha
 ```
-
-### Module installation from zip package
-
-* Make a new folder "captcha" in the **modules/oe/ directory** of your shop installation. 
-* Download the https://github.com/OXIDprojects/captcha-module/archive/master.zip file and unpack it into the created folder.
+And add repository to root composer:
+```bash
+composer config repositories.oxid-projects/captcha-module path "source/modules/oe/captcha"
+```
+And install module:
+```bash
+composer require oxid-projects/captcha-module
+vendor/bin/oe-console oe:module:install source/modules/oe/captcha
+# And activate
+vendor/bin/oe-console oe:module:activate oecaptcha
+```
 
 ## Activate Module
 
 - Activate the module in the administration panel.
+- Or use console
+```bash
+vendor/bin/oe-console oe:module:activate oecaptcha
+```
 
 ## Uninstall
 
-Disable the module in administration area and delete the module folder.
+Disable the module in administration area or by executing following shell command.
+```bash
+vendor/bin/oe-console oe:module:deactivate oecaptcha
+```
+If installed over composer (packagist):
+```bash
+composer remove oxid-projects/captcha-module
+```
+else if cloned:
+```bash
+vendor/bin/oe-console oe:module:uninstall oecaptcha
+composer remove oxid-projects/captcha-module
+composer config --unset repositories.oxid-projects/captcha-module
+# and remove the source itself
+rm -rf source/modules/oe/captcha
+```
 
 ## License
 
