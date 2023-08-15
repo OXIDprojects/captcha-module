@@ -19,7 +19,19 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Security
 
+## [7.0.0] - 18 Jul 2023
+### Changed
+- PHP 8.0 compatibility
+- OXID 7.0 compatibility
+- Twig & Smarty Support
+- Major version bump to 7.0.0 to match OXID 7.0 compatibility
 
+### Removed
+- Suggest dropped out
+- /docs folder (no relevant information)
+
+### Deprecated
+- Tests won't work for this release and should be updated in the future.
 
 ## [2.0.4] - 22 Oct 2021
 

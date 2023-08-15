@@ -1,0 +1,6 @@
+{% extends "form/contact.html.twig" %}
+
+{% block captcha_form %}
+    {{ parent() }}
+    {% include "@oecaptcha/oe_captcha.html.twig" %}
+{% endblock %}
