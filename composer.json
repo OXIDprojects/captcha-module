@@ -2,7 +2,13 @@
   "name": "oxid-projects/captcha-module",
   "description": "This is Captcha module for OXID eShop.",
   "type": "oxideshop-module",
-  "keywords": ["oxid", "modules", "eShop", "captcha"],
+  "version": "7.0.0",
+  "keywords": [
+    "oxid",
+    "modules",
+    "eShop",
+    "captcha"
+  ],
   "homepage": "https://www.oxid-esales.com/en/home.html",
   "license": [
     "GPL-3.0",
@@ -11,6 +17,15 @@
   "extra": {
     "oxideshop": {
       "target-directory": "oe/captcha"
+    }
+  },
+  "require": {
+    "oxid-esales/oxideshop-ce": "^7.0",
+    "ext-gd": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "OxidProfessionalServices\\Captcha\\": "./"
     }
   }
 }
